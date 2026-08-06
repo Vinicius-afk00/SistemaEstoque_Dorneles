@@ -1,2 +1,3 @@
 entity\ProdutoEntity.class
+util\HibernateUtil.class
 main\main.class
