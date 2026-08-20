@@ -1,4 +1,12 @@
+view\ProdutoModel.class
+view\ProdutoView.class
+view\ProdutoForm$1.class
+view\ProdutoForm$1$1.class
 entity\ProdutoEntity.class
 util\HibernateUtil.class
+view\ProdutoView$2.class
+view\ProdutoView$3.class
 dao\ProdutoDao.class
+view\ProdutoForm.class
+view\ProdutoView$1.class
 main\main.class
