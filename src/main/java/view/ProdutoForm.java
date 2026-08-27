@@ -4,7 +4,9 @@
  */
 package view;
 
+import dao.ProdutoDao;
 import entity.ProdutoEntity;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,13 +15,17 @@ import entity.ProdutoEntity;
 public class ProdutoForm extends javax.swing.JDialog {
 
     private boolean atualizar=false;
+    ProdutoView telaAnterior;
     
     /**
      * Creates new form ProdutoForm
      */
     public ProdutoForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        telaAnterior=(ProdutoView) parent;
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -99,8 +105,8 @@ public class ProdutoForm extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jTxtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -145,17 +151,22 @@ public class ProdutoForm extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+        ProdutoDao dao = new ProdutoDao();
         
         ProdutoEntity prod = new ProdutoEntity();
         prod.setDescricao(jTxtProduto.getText());
         prod.setCategoria(jCboCategoria.getSelectedItem().toString());
         prod.setMarca(jTxtMarca.getText());
         prod.setPreco(Float.parseFloat(jTxtPreco.getText()));
-        prod.setAtivo(jCxAtivo.isSelected());
+        prod.setAtivo(jCxAtivo.isSelected() );
         
         if(!atualizar){
-            
+            dao.salvar(prod);
+            JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
         }
+        
+        telaAnterior.reflashTabelea();
+        dispose();
         
     }//GEN-LAST:event_jBtnOkActionPerformed
 

@@ -5,6 +5,10 @@
 package view;
 
 import dao.ProdutoDao;
+import entity.ProdutoEntity;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,12 +24,19 @@ public class ProdutoView extends javax.swing.JFrame {
      */
     public ProdutoView() {
         initComponents();
+        setLocationRelativeTo(null);
+
         
         dao = new ProdutoDao();
         model = new ProdutoModel();
         model.setLista(dao.listar());
         jTbProdutos.setModel(model);
         
+    }
+    
+    public void reflashTabelea(){
+        model.setLista(dao.listar());
+        jTbProdutos.setModel(model);
     }
 
     /**
@@ -70,10 +81,20 @@ public class ProdutoView extends javax.swing.JFrame {
         });
 
         jBtnBusca.setText("Buscar");
+        jBtnBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnBuscaActionPerformed(evt);
+            }
+        });
 
         jBtnAlterar.setText("Alterar");
 
         jBtnExcluir.setText("Excluir");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
 
         jBtnNovo.setText("Novo");
         jBtnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +154,36 @@ public class ProdutoView extends javax.swing.JFrame {
         ProdutoForm telaNovo = new ProdutoForm(this, true);
         telaNovo.setVisible(true);
     }//GEN-LAST:event_jBtnNovoActionPerformed
+
+    private void jBtnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscaActionPerformed
+        // TODO add your handling code here:
+        String busca = jTxtBusca.getText();
+        
+        if(busca.isEmpty()){
+            reflashTabelea();
+        }else{
+           ProdutoEntity prod = dao.buscar(Integer.parseInt(busca));
+           List<ProdutoEntity> list = new ArrayList();
+           list.add(prod);
+           model.setLista(list);
+        }
+        
+    }//GEN-LAST:event_jBtnBuscaActionPerformed
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        // TODO add your handling code here:
+        int id = jTbProdutos.getSelectedRow();
+        
+        if(id<0)
+            JOptionPane.showMessageDialog(this, "Selecione um produto antes");
+        else{
+            ProdutoEntity prod = model.getLista().get(id);
+            dao.deletar(prod.getId());
+            JOptionPane.showMessageDialog(this, "Excluído com sucesso!");
+            reflashTabelea();
+        }
+        
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**
      * @param args the command line arguments

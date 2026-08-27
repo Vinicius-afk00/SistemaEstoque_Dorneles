@@ -28,6 +28,7 @@ public class ProdutoModel extends AbstractTableModel{
      */
     public void setLista(List<ProdutoEntity> lista) {
         this.lista = lista;
+        fireTableDataChanged();
     }
 
     @Override
