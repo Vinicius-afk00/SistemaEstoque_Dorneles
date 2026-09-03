@@ -3,13 +3,16 @@ view\ProdutoModel.class
 view\ProdutoView$5.class
 view\ProdutoView.class
 view\ProdutoForm$1.class
+view\ProdutoView$6.class
 entity\ProdutoEntity.class
 util\HibernateUtil.class
 view\ProdutoView$2.class
+entity\UsuarioEntity.class
 view\ProdutoView$3.class
 dao\ProdutoDao.class
 view\ProdutoForm.class
 view\ProdutoForm$2$1.class
 view\ProdutoView$1.class
 view\ProdutoView$4.class
+entity\FornecedorEntity.class
 main\main.class

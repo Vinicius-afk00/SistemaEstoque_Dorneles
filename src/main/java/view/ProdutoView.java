@@ -88,6 +88,11 @@ public class ProdutoView extends javax.swing.JFrame {
         });
 
         jBtnAlterar.setText("Alterar");
+        jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnAlterarActionPerformed(evt);
+            }
+        });
 
         jBtnExcluir.setText("Excluir");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +189,19 @@ public class ProdutoView extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+        // TODO add your handling code here:
+        int id = jTbProdutos.getSelectedRow();
+        if(id<0)
+            JOptionPane.showMessageDialog(this, "Selecione um produto antes");
+        else{
+            ProdutoEntity prod = model.getLista().get(id);
+            ProdutoForm telaForm = new ProdutoForm(this, true);
+            telaForm.PreencheForm(prod);
+            telaForm.setVisible(true);
+        }
+    }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     /**
      * @param args the command line arguments

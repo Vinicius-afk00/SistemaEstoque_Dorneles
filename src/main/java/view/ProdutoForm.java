@@ -27,6 +27,16 @@ public class ProdutoForm extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
     }
+    
+    public void PreencheForm(ProdutoEntity prod){
+        atualizar=true;
+        jTxtCodigo.setText(String.valueOf(prod.getId()));
+        jTxtProduto.setText(prod.getDescricao());
+        jCboCategoria.setSelectedItem(prod.getCategoria());
+        jTxtMarca.setText(prod.getMarca());
+        jTxtPreco.setText(String.valueOf(prod.getPreco()));
+        jCxAtivo.setSelected(prod.isAtivo());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,6 +173,10 @@ public class ProdutoForm extends javax.swing.JDialog {
         if(!atualizar){
             dao.salvar(prod);
             JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+        }else{
+            prod.setId(Integer.parseInt(jTxtCodigo.getText()));
+            dao.atualizar(prod);
+            JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
         }
         
         telaAnterior.reflashTabelea();
