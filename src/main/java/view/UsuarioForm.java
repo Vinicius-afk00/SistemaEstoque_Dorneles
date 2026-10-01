@@ -63,6 +63,9 @@ public class UsuarioForm extends javax.swing.JDialog {
 
         jLabel1.setText("Codigo");
 
+        jTxtCodigo.setEditable(false);
+        jTxtCodigo.setEnabled(false);
+
         jLabel2.setText("Nome");
 
         jLabel3.setText("Email");

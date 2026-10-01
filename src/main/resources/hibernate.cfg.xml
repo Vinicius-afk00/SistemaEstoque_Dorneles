@@ -25,6 +25,8 @@
         
         <!-- Mapeamento das entidades (tabelas)-->
         <mapping class="entity.ProdutoEntity"/>
+        <mapping class="entity.FornecedorEntity"/>
+        <mapping class="entity.UsuarioEntity"/>
 
     </session-factory>
 </hibernate-configuration>

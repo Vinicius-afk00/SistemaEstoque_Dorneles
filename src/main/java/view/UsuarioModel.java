@@ -28,6 +28,7 @@ public class UsuarioModel extends AbstractTableModel{
      */
     public void setLista(List<UsuarioEntity> lista) {
         this.lista = lista;
+        fireTableDataChanged();
     }
 
     @Override
@@ -42,16 +43,26 @@ public class UsuarioModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        UsuarioEntity usu = lista.get(rowIndex);
+        
+        return switch (columnIndex) {
+            case 0 -> usu.getId();
+            case 1 -> usu.getNome();
+            case 2 -> usu.getEmail();
+            case 3 -> usu.getSenha();
+            case 4 -> usu.getFuncao();
+            case 5 -> usu.isAtivo();
+            default -> "";
+        };
     }
     
     public String getColumnName(int column){
         return switch(column){
             case 0 -> "Codigo";
-            case 1 -> "Produto";
-            case 2 -> "Categoria";
-            case 3 -> "Marca";
-            case 4 -> "Preco";
+            case 1 -> "nome";
+            case 2 -> "Email";
+            case 3 -> "Senha";
+            case 4 -> "Função";
             case 5 -> "Status";
             default -> "";
         };

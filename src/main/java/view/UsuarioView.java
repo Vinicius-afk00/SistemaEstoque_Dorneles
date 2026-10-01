@@ -201,7 +201,7 @@ public class UsuarioView extends javax.swing.JDialog {
 
     private void jBtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNovoActionPerformed
         // TODO add your handling code here:
-        ProdutoForm telaNovo = new ProdutoForm(null, true);
+        UsuarioForm telaNovo = new UsuarioForm(null, true);
         telaNovo.setTelaAnterior(this);
         telaNovo.setVisible(true);
     }//GEN-LAST:event_jBtnNovoActionPerformed

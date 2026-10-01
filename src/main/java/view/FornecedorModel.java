@@ -28,6 +28,7 @@ public class FornecedorModel extends AbstractTableModel{
      */
     public void setLista(List<FornecedorEntity> lista) {
         this.lista = lista;
+        fireTableDataChanged();
     }
 
     @Override
@@ -42,17 +43,29 @@ public class FornecedorModel extends AbstractTableModel{
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        FornecedorEntity forne = lista.get(rowIndex);
+        
+        return switch (columnIndex) {
+            case 0 -> forne.getId();
+            case 1 -> forne.getRazao_social();
+            case 2 -> forne.getNome_fantasia();
+            case 3 -> forne.getCnpj();
+            case 4 -> forne.getTelefone();
+            case 5 -> forne.getEmail();
+            case 6 -> forne.getCidade();
+            default -> "";
+        };
     }
     
     public String getColumnName(int column){
         return switch(column){
             case 0 -> "Codigo";
-            case 1 -> "Produto";
-            case 2 -> "Categoria";
-            case 3 -> "Marca";
-            case 4 -> "Preco";
-            case 5 -> "Status";
+            case 1 -> "Razão Social";
+            case 2 -> "Nome Fantasia";
+            case 3 -> "CNPJ";
+            case 4 -> "Telefone";
+            case 5 -> "Email";
+            case 6 -> "Cidade";
             default -> "";
         };
     }

@@ -67,6 +67,9 @@ public class FornecedorForm extends javax.swing.JDialog {
 
         jLabel1.setText("Codigo");
 
+        jTxtCodigo.setEditable(false);
+        jTxtCodigo.setEnabled(false);
+
         jLabel2.setText("Razão Social");
 
         jLabel3.setText("Nome Fantasia");
