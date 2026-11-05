@@ -27,6 +27,8 @@
         <mapping class="entity.ProdutoEntity"/>
         <mapping class="entity.FornecedorEntity"/>
         <mapping class="entity.UsuarioEntity"/>
+        <mapping class="entity.MovimentoEntity"/>
+        <mapping class="entity.MovimentoItemEntity"/>
 
     </session-factory>
 </hibernate-configuration>
